@@ -1,16 +1,26 @@
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <section className="bg-gray-100 py-12">
       <div className="max-w-5xl mx-auto px-6">
         {/* Banner Image */}
-        <img
+        <motion.img
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           src="/images/about-us.jpg"
           alt="About RentMyRide"
           className="rounded-lg shadow-lg mb-8 w-full h-64 object-cover"
         />
 
         {/* Intro */}
-        <div className="bg-white p-8 rounded-lg shadow-md">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="bg-white p-8 rounded-lg shadow-md"
+        >
           <h1 className="text-4xl font-extrabold text-green-600 mb-4">About Us</h1>
           <p className="text-gray-700 mb-4">
             Welcome to <strong>RentMyRide</strong> — your trusted car rental partner.
@@ -22,7 +32,7 @@ const About = () => {
           <p className="text-gray-700">
             We’re passionate about convenience, cleanliness, and cost transparency. No hidden charges. No hassle. Just drive.
           </p>
-        </div>
+        </motion.div>
 
         {/* Highlights */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
@@ -42,12 +52,18 @@ const About = () => {
               title: "Clean & Reliable",
               text: "All vehicles are sanitized and quality-checked before handoff.",
             },
-          ].map((item) => (
-            <div key={item.title} className="bg-white p-6 rounded-lg shadow text-center">
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
+              className="bg-white p-6 rounded-lg shadow text-center"
+            >
               <div className="text-4xl mb-3">{item.icon}</div>
               <h3 className="text-xl font-semibold text-green-700 mb-2">{item.title}</h3>
               <p className="text-gray-600">{item.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
